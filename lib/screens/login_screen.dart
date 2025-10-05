@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stream_line/blocs/auth/login_bloc.dart';
 import 'package:stream_line/blocs/auth/login_event.dart';
 import 'package:stream_line/blocs/auth/login_state.dart';
+import 'package:stream_line/screens/home_screen.dart';
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});
@@ -21,17 +22,25 @@ class LoginScreen extends StatelessWidget {
                 .showSnackBar(SnackBar(content: Text(state.error)));
           }
 
-          if (state is OnSuccess) {}
+          if (state is OnSuccess) {
+            Navigator.pushReplacement(context,
+                MaterialPageRoute(builder: (context) => const HomeScreen()));
+          }
         },
         builder: (context, state) {
           return Scaffold(
-            body: Column(
+              body: Padding(
+            padding: EdgeInsets.all(16.0),
+            child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 TextField(
                   controller: _emailController,
                   decoration: const InputDecoration(label: Text("Email")),
+                ),
+                const SizedBox(
+                  height: 10,
                 ),
                 TextField(
                   controller: _passwordController,
@@ -52,7 +61,7 @@ class LoginScreen extends StatelessWidget {
                       child: const Text("Login"))
               ],
             ),
-          );
+          ));
         },
       ),
     );
