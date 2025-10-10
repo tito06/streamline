@@ -24,13 +24,13 @@ class LoginScreen extends StatelessWidget {
 
           if (state is OnSuccess) {
             Navigator.pushReplacement(context,
-                MaterialPageRoute(builder: (context) => const HomeScreen()));
+                MaterialPageRoute(builder: (context) => const DashboardPage()));
           }
         },
         builder: (context, state) {
           return Scaffold(
               body: Padding(
-            padding: EdgeInsets.all(16.0),
+            padding: const EdgeInsets.all(16.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,

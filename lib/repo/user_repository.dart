@@ -18,7 +18,7 @@ class UserRepository {
     print("Supabase role response raw: $response");
 
     // response might be null or Map<String, dynamic>
-    if (response != null && response is Map<String, dynamic>) {
+    if (response != null) {
       final role = response['role'];
       print("Role found: $role");
       return role as String?;
